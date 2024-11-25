@@ -1,40 +1,40 @@
 # Visitor Monitoring System (Arduino Uno & Wemos)
 
-Proyek ini adalah sistem monitoring pengunjung yang terdiri dari dua perangkat: **Arduino Uno** dan **Wemos (ESP8266)**. Arduino Uno bertugas mengumpulkan data sensor dan mengirimkannya ke Wemos, yang kemudian mengirimkan data tersebut ke server API.
+This project is a visitor monitoring system that consists of two devices: **Arduino Uno** and **Wemos (ESP8266)**. The Arduino Uno is responsible for collecting sensor data and sending it to the Wemos, which then sends the data to the API server.
 
-### Fitur
-- **Arduino Uno** mengumpulkan data suhu, kelembapan, dan jumlah pengunjung.
-- **Wemos (ESP8266)** menerima data dari Arduino, memformat data, dan mengirimnya ke server API dalam format JSON.
+### Features
+- **Arduino Uno** collects data on temperature, humidity, and the number of visitors.
+- **Wemos (ESP8266)** receives data from Arduino, formats the data, and sends it to the API server in JSON format.
 
 ---
 
-## Persyaratan
+## Requirements
 
 - **Arduino Uno**
 - **Wemos (ESP8266)**
-- **Modul DHT11 atau DHT22** (untuk suhu dan kelembapan)
-- **Modul RFID atau sensor gerak** (untuk mendeteksi jumlah pengunjung, opsional)
-- **WiFi** yang terhubung dengan internet
+- **DHT11 or DHT22 Module** (for temperature and humidity)
+- **RFID Module or Motion Sensor** (for detecting the number of visitors, optional)
+- **WiFi** connected to the internet
 
 ---
 
-## Langkah-Langkah Penggunaan
+## How to Use
 
-### 1. Menyiapkan Koneksi WiFi
-Sebelum meng-upload kode ke Wemos, Anda perlu mengubah SSID dan password WiFi agar sesuai dengan jaringan lokal Anda.
+### 1. Set Up WiFi Connection
+Before uploading the code to the Wemos, you need to change the SSID and WiFi password to match your local network.
 
-- Buka file `WemosCode.ino` pada Arduino IDE.
-- Temukan bagian berikut di kode:
+- Open the `WemosCode.ino` file in the Arduino IDE.
+- Locate the following section in the code:
 
     ```cpp
-    const char* ssid = "ZTE_2.4G_36kdi9";  // Ganti dengan SSID WiFi Anda
-    const char* password = "12345678";     // Ganti dengan password WiFi Anda
+    const char* ssid = "ZTE_2.4G_36kdi9";  // Replace with your WiFi SSID
+    const char* password = "12345678";     // Replace with your WiFi password
     ```
 
-- Ganti `ssid` dan `password` dengan kredensial WiFi Anda.
+- Replace `ssid` and `password` with your WiFi credentials.
 
-### 2. Mengubah Nama Server API
-Pada bagian kode Wemos, terdapat URL server API yang digunakan untuk mengirimkan data. Anda perlu menyesuaikan server API ini dengan API yang Anda gunakan. Berikut adalah bagian yang perlu diubah:
+### 2. Change the API Server URL
+In the Wemos code, there is a URL for the API server used to send the data. You need to adjust this to the API you are using. Here is the part that needs to be changed:
 
 ```cpp
-const String serverName = "http://192.168.1.6:3000/api/post-visitors";  // Ganti dengan URL API Anda
+const String serverName = "http://192.168.1.6:3000/api/post-visitors";  // Replace with your API URL
